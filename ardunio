@@ -1,0 +1,422 @@
+include <ros.h>
+//#include<math.h>
+#include <geometry_msgs/Twist.h>
+#include <ros/time.h>
+//#include <tf/transform_broadcaster.h>
+//#include <nav_msgs/Odometry.h>
+#define max_linear  20 
+#define max_turn_line 18 
+#define diameter 4.5 
+#define car_width 24 
+#define car_length 27 
+#define DIRL 22  
+#define DIRR 26  
+#define PULL 24  
+#define PULR 28  
+#define TIMEFUCK 1000000
+#define PII 3.1416
+int t=0;
+int time_l =999999999;    
+int time_r =999999999;   
+int linear = 0;
+float angular = 0;
+boolean status = false;
+ros::NodeHandle nh;
+void motor_cb(const geometry_msgs::Twist& vel)
+{
+  linear = vel.linear.x * 100; 
+  angular = vel.angular.z;
+}
+ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel", motor_cb);
+void setup() {
+  pinMode(DIRL, OUTPUT);
+  pinMode(DIRR, OUTPUT);
+  pinMode(PULL, OUTPUT);
+  pinMode(PULR, OUTPUT);
+  nh.initNode();
+  nh.subscribe(sub);
+}
+void advance()
+{
+    digitalWrite(DIRL, LOW);
+    digitalWrite(DIRR, HIGH);
+    int times_l= int(TIMEFUCK/(2*time_l));
+    int times_r= int(TIMEFUCK/(2*time_r));
+    if(time_l<time_r){
+    for(int i=0;i<times_l;i++){
+        digitalWrite(PULL, HIGH);
+        if(t%time_r == 0){
+            status=!status;
+            if(status == true){
+                digitalWrite(PULR, HIGH);
+            }
+            else{
+                 digitalWrite(PULR, LOW);
+            }
+           delayMicroseconds(time_l);
+            t= time_l;
+        }
+        else if ((t<time_r)&&(time_r<t+time_l)) {
+            int time=time_r-t;
+            delayMicroseconds(time);
+            status=!status;
+            if(status == true){
+                digitalWrite(PULR, HIGH);
+            }
+            else{
+                 digitalWrite(PULR, LOW);
+                        }
+            time = time_l-time;
+            delayMicroseconds(time);
+            t = time;
+        }
+        else{
+            t= t+time_l;
+            delayMicroseconds(time_l);
+        }
+        digitalWrite(PULL, LOW);
+       if(t%time_r == 0){
+            status=!status;
+            if(status == true){
+                digitalWrite(PULR, HIGH);
+            }
+            else{
+                 digitalWrite(PULR, LOW);
+            }
+           delayMicroseconds(time_l);
+            t= time_l;
+        }
+        else if ((t<time_r)&&(time_r<t+time_l)) {
+            int time=time_r-t;
+            delayMicroseconds(time);
+            status=!status;
+            if(status == true){
+                digitalWrite(PULR, HIGH);
+            }
+            else{
+                 digitalWrite(PULR, LOW);
+                        }
+            time = time_l-time;
+            delayMicroseconds(time);
+            t = time;
+        }
+        else{
+            t= t+time_l;
+            delayMicroseconds(time_l);
+        }
+
+    }
+    }
+
+    else if(time_l>time_r){
+        for(int i=0;i<times_r;i++){
+            digitalWrite(PULR, HIGH);
+            if(t%time_l == 0){
+                status=!status;
+                if(status == true){
+                    digitalWrite(PULL, HIGH);
+                }
+                else{
+                     digitalWrite(PULL, LOW);
+                }
+               delayMicroseconds(time_r);
+                t= time_r;
+            }
+            else if ((t<time_l)&&(time_l<t+time_r)) {
+                int time=time_l-t;
+                delayMicroseconds(time);
+                status=!status;
+                if(status == true){
+                    digitalWrite(PULL, HIGH);
+                }
+                else{
+                     digitalWrite(PULL, LOW);
+                }
+                time = time_r-time;
+                delayMicroseconds(time);
+                t = time;
+            }
+            else{
+                t= t+time_r;
+                delayMicroseconds(time_r);
+            }
+           digitalWrite(PULR, HIGH);
+            if(t%time_l == 0){
+                status=!status;
+                if(status == true){
+                    digitalWrite(PULL, HIGH);
+                }
+                else{
+                     digitalWrite(PULL, LOW);
+                }
+               delayMicroseconds(time_r);
+                t= time_r;
+            }
+            else if ((t<time_l)&&(time_l<t+time_r)) {
+                int time=time_l-t;
+                delayMicroseconds(time);
+                status=!status;
+                if(status == true){
+                    digitalWrite(PULL, HIGH);
+                }
+                else{
+                    digitalWrite(PULL, LOW);
+                }
+                time = time_r-time;
+                delayMicroseconds(time);
+                t = time;
+            }
+            else{
+                t= t+time_r;
+                delayMicroseconds(time_r);
+            }
+
+        }
+        }
+    else{
+        for(int i=0;i<times_l;i++){
+            digitalWrite(PULL,HIGH);
+            digitalWrite(PULR,HIGH);
+            delayMicroseconds(time_l);
+            digitalWrite(PULL,LOW);
+            digitalWrite(PULR,LOW);
+            delayMicroseconds(time_l);
+        }
+    }
+
+}
+void back()//潞贸脥脣
+{
+    digitalWrite(DIRL, HIGH);
+    digitalWrite(DIRR, LOW);
+    int times_l= int(TIMEFUCK/(2*time_l));
+    int times_r= int(TIMEFUCK/(2*time_r));
+    if(time_l<time_r){
+    for(int i=0;i<times_l;i++){
+        digitalWrite(PULL, HIGH);
+        if(t%time_r == 0){
+            status=!status;
+            if(status == true){
+                digitalWrite(PULR, HIGH);
+            }
+            else{
+                 digitalWrite(PULR, LOW);
+            }
+           delayMicroseconds(time_l);
+            t= time_l;
+        }
+        else if ((t<time_r)&&(time_r<t+time_l)) {
+            int time=time_r-t;
+            delayMicroseconds(time);
+            status=!status;
+            if(status == true){
+                digitalWrite(PULR, HIGH);
+            }
+            else{
+                 digitalWrite(PULR, LOW);
+            }
+            time = time_l-time;
+            delayMicroseconds(time);
+            t = time;
+        }
+        else{
+            t= t+time_l;
+            delayMicroseconds(time_l);
+        }
+        digitalWrite(PULL, LOW);
+         if(t%time_r == 0){
+            status=!status;
+            if(status == true){
+                digitalWrite(PULR, HIGH);
+            }
+            else{
+                 digitalWrite(PULR, LOW);
+            }
+           delayMicroseconds(time_l);
+            t= time_l;
+        }
+        else if ((t<time_r)&&(time_r<t+time_l)) {
+            int time=time_r-t;
+            delayMicroseconds(time);
+            status=!status;
+            if(status == true){
+                digitalWrite(PULR, HIGH);
+            }
+            else{
+                 digitalWrite(PULR, LOW);
+            }
+            time = time_l-time;
+            delayMicroseconds(time);
+            t = time;
+        }
+        else{
+            t= t+time_l;
+            delayMicroseconds(time_l);
+        }
+
+    }
+    }
+    else if(time_l>time_r){    
+        for(int i=0;i<times_r;i++){
+            digitalWrite(PULR, HIGH);
+            if(t%time_l == 0){
+                status=!status;
+                if(status == true){
+                    digitalWrite(PULL, HIGH);
+                }
+                else{
+                     digitalWrite(PULL, LOW);
+                }
+               delayMicroseconds(time_r);
+                t= time_r;
+            }
+            else if ((t<time_l)&&(time_l<t+time_r)) {
+                int time=time_l-t;
+                delayMicroseconds(time);
+                status=!status;
+                if(status == true){
+                    digitalWrite(PULL, HIGH);
+                }
+                else{
+                     digitalWrite(PULL, LOW);
+                }
+                time = time_r-time;
+                delayMicroseconds(time);
+                t = time;
+            }
+            else{
+                t= t+time_r;
+                delayMicroseconds(time_r);
+            }
+            digitalWrite(PULR, LOW);
+            if(t%time_l == 0){
+                status=!status;
+                if(status == true){
+                    digitalWrite(PULL, HIGH);
+                }
+                else{
+                     digitalWrite(PULL, LOW);
+                }
+               delayMicroseconds(time_r);
+                t= time_r;
+            }
+            else if ((t<time_l)&&(time_l<t+time_r)) {
+                int time=time_l-t;
+                delayMicroseconds(time);
+                status=!status;
+                if(status == true){
+                    digitalWrite(PULL, HIGH);
+                }
+                else{
+                     digitalWrite(PULL, LOW);
+                }
+                time = time_r-time;
+                delayMicroseconds(time);
+                t = time;
+            }
+            else{
+                t= t+time_r;
+                delayMicroseconds(time_r);
+            }
+
+        }
+        }
+    else{
+        for(int i=0;i<times_l;i++){
+            digitalWrite(PULL,HIGH);
+            digitalWrite(PULR,HIGH);
+            delayMicroseconds(time_l);
+            digitalWrite(PULL,LOW);
+            digitalWrite(PULR,LOW);
+            delayMicroseconds(time_l);
+        }
+    }
+}
+void loop() {
+  nh.spinOnce();
+  if (angular == 0) { 
+    if (linear > 0) { 
+     // Serial.println("Go Forward!\n");
+      if (linear > max_linear)
+        linear = max_linear;
+      float linear_left = linear; 
+      float linear_right = linear; 
+      time_l = TIMEFUCK*0.45*PII*4.5/(720*linear_left);
+      time_r = TIMEFUCK*0.45*PII*4.5/(720*linear_right);
+      advance();
+    } else if (linear < 0) { 
+      //Serial.println("Go Backward!\n");
+      linear = abs(linear);
+      if (linear > max_linear)
+        linear = max_linear;
+      float linear_left = linear; 
+      float linear_right = linear;
+      time_l = int(TIMEFUCK*0.45*PII*4.5/(720*linear_left));
+      time_r = int(TIMEFUCK*0.45*PII*4.5/(720*linear_right));
+      back();
+    }
+
+  } else if (angular > 0) { 
+   // Serial.println("Turn Left!\n");
+    if (linear > max_turn_line)
+    {
+      angular = angular * max_turn_line / linear;
+      linear = max_turn_line;
+    } else if (linear == 0) {
+      linear = max_turn_line;
+    }
+
+    float radius = linear / angular; 
+    if (radius < car_width / 2) 
+      radius = car_width / 2;
+
+    float radius_left = radius - car_width / 2; 
+    float radius_right = radius + car_width / 2; 
+
+    float linear_left = radius_left * angular; 
+    float linear_right = radius_right * angular; 
+    if(linear == max_turn_line){
+      linear_left = 20*(linear_left/linear_right);
+      linear_right = 20;
+    }
+    
+   
+    time_l = int(TIMEFUCK*0.45*PII*4.5/(720*linear_left));
+    time_r = int(TIMEFUCK*0.45*PII*4.5/(720*linear_right));
+    time_l=2400;
+    time_r = 500;
+    advance();
+
+  } else if (angular < 0) { 
+   // Serial.println("Turn Right!");
+    if (linear > max_turn_line) 
+    {
+      angular = angular * max_turn_line / linear;
+      linear = max_turn_line;
+
+    } else if (linear == 0) {
+      linear = max_turn_line;
+    }
+    float radius = linear / angular;
+    if (radius < car_width / 2) 
+      radius = car_width / 2;
+
+    float radius_left = radius + car_width / 2;
+    float radius_right = radius - car_width / 2;
+
+    float linear_left = radius_left * angular;
+    float linear_right = radius_right * angular;
+     if(linear == max_turn_line){
+      linear_right  = 20*(linear_right/linear_left);
+      linear_left = 20;
+     }
+    time_l = int(TIMEFUCK*0.45*PII*4.5/(720*linear_left));
+    time_r = int(TIMEFUCK*0.45*PII*4.5/(720*linear_right));
+    advance();
+  }
+  linear = 0;
+  angular = 0;
+  time_l=999999999;
+  time_r=999999999;
+  t=0;
+}

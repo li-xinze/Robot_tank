@@ -1,0 +1,8 @@
+prefix=/home/firefly/dev/catkin_ws/install
+
+Name: xfei_asr
+Description: Description of xfei_asr
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/firefly/dev/catkin_ws/install/lib 
+Requires: 

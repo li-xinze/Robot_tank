@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/firefly/dev/catkin_ws/devel/setup.sh

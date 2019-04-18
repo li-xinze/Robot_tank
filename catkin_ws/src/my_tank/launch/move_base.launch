@@ -1,0 +1,20 @@
+<launch>
+  <master auto="start"/>
+ 
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find my_tank)/map/mymap.yaml"/>
+ 
+  <!--- Run AMCL -->
+  <include file="$(find amcl)/examples/amcl_diff.launch" />
+  
+ 
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find my_tank)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find my_tank)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find my_tank)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find my_tank)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find my_tank)/config/base_local_planner_params.yaml" command="load" />
+  </node>
+
+
+</launch>

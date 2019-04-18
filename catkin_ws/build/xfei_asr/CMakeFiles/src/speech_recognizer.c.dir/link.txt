@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/src/speech_recognizer.c.dir/src/linuxrec.c.o  -o /home/firefly/dev/catkin_ws/devel/lib/xfei_asr/src/speech_recognizer.c -rdynamic 

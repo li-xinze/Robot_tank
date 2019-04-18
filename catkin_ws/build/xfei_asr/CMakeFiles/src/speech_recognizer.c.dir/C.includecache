@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/firefly/dev/catkin_ws/src/xfei_asr/include/formats.h
+
+/home/firefly/dev/catkin_ws/src/xfei_asr/include/linuxrec.h
+formats.h
+/home/firefly/dev/catkin_ws/src/xfei_asr/include/formats.h
+
+/home/firefly/dev/catkin_ws/src/xfei_asr/src/linuxrec.c
+stdio.h
+-
+stdlib.h
+-
+fcntl.h
+-
+alsa/asoundlib.h
+-
+signal.h
+-
+sys/stat.h
+-
+pthread.h
+-
+formats.h
+/home/firefly/dev/catkin_ws/src/xfei_asr/src/formats.h
+linuxrec.h
+/home/firefly/dev/catkin_ws/src/xfei_asr/src/linuxrec.h
+

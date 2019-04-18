@@ -1,0 +1,7 @@
+<launch>
+  <include file="$(find delta_2b_lidar)/launch/delta_2b.launch" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find delta_2b_lidar)/rviz/delta_2b_lidar.rviz" />
+</launch>
+
+<node pkg="tf" type="static_transform_publisher" name ="base_to_laser" args="0.0 0.0 0.18 0 0.0 0.0 base_link laser 100"/>

@@ -1,0 +1,4 @@
+---- CLidarPacket::verifyCheckSum Matches (3 in 3 files) ----
+CLidarPacket.cpp (src\src) line 152 : bool CLidarPacket::verifyCheckSum(u8 ProtoType)
+everest::hwdrivers::CLidarPacket in CLidarPacket.h (src\include) : 				bool verifyCheckSum(u8 ProtoType);
+CLidarPacketReceiver::processStateAcquireData in CLidarPacketReceiver.cpp (src\src) :         if(packet->verifyCheckSum(packet->getPrototypeCode()))

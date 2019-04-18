@@ -1,0 +1,2 @@
+Delta_2B_ros:goals:imu_tools/imu_complementary_filter:imu_tools/imu_filter_madgwick:imu_tools/imu_tools:imu_tools/rviz_imu_plugin:mpu6050_serial_to_imu:my_tank
+-DCATKIN_DEVEL_PREFIX=/home/firefly/dev/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/firefly/dev/catkin_ws/install -G Unix Makefiles

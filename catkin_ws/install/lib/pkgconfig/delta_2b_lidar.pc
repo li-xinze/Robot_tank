@@ -1,0 +1,8 @@
+prefix=/home/firefly/dev/catkin_ws/install
+
+Name: delta_2b_lidar
+Description: Description of delta_2b_lidar
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/firefly/dev/catkin_ws/install/lib 
+Requires: 

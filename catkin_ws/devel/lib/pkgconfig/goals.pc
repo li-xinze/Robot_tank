@@ -1,0 +1,8 @@
+prefix=/home/firefly/dev/catkin_ws/devel
+
+Name: goals
+Description: Description of goals
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/firefly/dev/catkin_ws/devel/lib 
+Requires: 
