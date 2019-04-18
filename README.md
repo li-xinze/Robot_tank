@@ -27,7 +27,7 @@ A smart car based on ROS.
   - 由于科大讯飞缺少对ARM64的处理器的支持(提交工单不给编译),此功能实现搁置。
   - 对机械臂的运动控制还在进行中。
 ### Robot_tank构造
-![map](https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/1.JPG" width="600)
-![map](https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/2.JPG" width="600)
+![map](https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/1.JPG)
+![map](https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/2.JPG)
   
   
