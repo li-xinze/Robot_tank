@@ -18,8 +18,9 @@ A smart car based on ROS.
     其中，Arduino上的程序可以实现在同时只有一组脉冲时，驱动两电机有不同的速度。[完成base_controller]
     详见[点击](https://www.zhihu.com/question/52708719/answer/585089570)
   - 里程计的数据由一个python程序监听cmd_vel，geometry_msgs/Twist主题的广播，相应变换为odom主题所需格式后广播。[完成odometry source]
-  - 在odom主题可以成功发布的情况下，用雷达gmapping建图(室内)如下：       [完成map_server与sensor sources]
-  <img src="https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/map.JPG" width="300">
+  - 在odom主题可以成功发布的情况下，用雷达gmapping建图(室内)如下：
+  
+    [完成map_server与sensor sources]
   - 最后注意各个tf变换与导航功能包集的配置，完成自主导航与避障部分。
   - firefly RK3399 跑不动tensorflow,用一台云服务器搭建VPN，将小车的网络与一有独显的PC的网络连接到该通道，
     实现两台不同局域网下电脑的ROS通信，使图像识别在PC上运算。
