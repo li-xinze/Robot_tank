@@ -19,7 +19,7 @@ A smart car based on ROS.
     详见[点击](https://www.zhihu.com/question/52708719/answer/585089570)
   - 里程计的数据由一个python程序监听cmd_vel，geometry_msgs/Twist主题的广播，相应变换为odom主题所需格式后广播。[完成odometry source]
   - 在odom主题可以成功发布的情况下，用雷达gmapping建图(室内)如下：
-  <img src="https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/map.JPG" width="300">
+  ![map](https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/map.JPG)
     [完成map_server与sensor sources]
   - 最后注意各个tf变换与导航功能包集的配置，完成自主导航与避障部分。
   - firefly RK3399 跑不动tensorflow,用一台云服务器搭建VPN，将小车的网络与一有独显的PC的网络连接到该通道，
@@ -27,7 +27,7 @@ A smart car based on ROS.
   - 由于科大讯飞缺少对ARM64的处理器的支持(提交工单不给编译),此功能实现搁置。
   - 对机械臂的运动控制还在进行中。
 ### Robot_tank构造
-    <img src="https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/1.JPG" width="600">
-    <img src="https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/2.JPG" width="600">
+![map](https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/1.JPG" width="600)
+![map](https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/2.JPG" width="600)
   
   
