@@ -19,5 +19,5 @@ A smart car based on ROS.
     详见[点击](https://www.zhihu.com/question/52708719/answer/585089570)
   - 里程计的数据由一个python程序监听cmd_vel，geometry_msgs/Twist主题的广播，相应变换为odom主题所需格式后广播。
   - 在odom主题可以成功发布的情况下，用雷达gmapping建图(室内)如下：
-  ![map](https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/map.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
+  ![map](https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/map.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/20)
   
