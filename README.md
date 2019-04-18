@@ -15,9 +15,11 @@ A smart car based on ROS.
 2. 实现方案
   - 电机未采用直流电机，未使用闭环控制\(如能不失步，可确保足够的精确度\)。
   - 控制电机的流程为：Firefly开发板\(ROS\)\-Arduino\-步进电机驱动器\-步进电机。
-    其中，Arduino上的程序可以实现在同时只有一组脉冲时，驱动两电机有不同的速度。
+    其中，Arduino上的程序可以实现在同时只有一组脉冲时，驱动两电机有不同的速度。[完成base_controller]
     详见[点击](https://www.zhihu.com/question/52708719/answer/585089570)
-  - 里程计的数据由一个python程序监听cmd_vel，geometry_msgs/Twist主题的广播，相应变换为odom主题所需格式后广播。
-  - 在odom主题可以成功发布的情况下，用雷达gmapping建图(室内)如下：
+  - 里程计的数据由一个python程序监听cmd_vel，geometry_msgs/Twist主题的广播，相应变换为odom主题所需格式后广播。[完成odometry source]
+  - 在odom主题可以成功发布的情况下，用雷达gmapping建图(室内)如下：       [完成map_server与sensor sources]
   <img src="https://github.com/Dennis-lixinze/Robot_tank/raw/master/display/map.JPG" width="300">
+  - 最后注意各个tf变换与导航功能包集的配置，完成自主导航与避障部分。
+  
   
